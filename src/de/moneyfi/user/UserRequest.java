@@ -16,11 +16,11 @@ public class UserRequest {
     @RequestMapping(path="/add")
     public User addNewUser (@RequestParam(name="name", required=true) String name,
     		@RequestParam(name="hashpassword", required=true) String hashpassword,
-                            @RequestParam(name="group", required = true) String group) {
+                            @RequestParam(name="company", defaultValue = "default") String group) {
         User n = new User();
         n.setName(name);
         n.setHashpassword(hashpassword);
-        n.setGroup("default");
+        n.setCompany(group);
         n = userRepository.save(n);
         return n;
     }

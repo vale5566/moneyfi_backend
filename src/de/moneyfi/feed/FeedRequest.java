@@ -30,7 +30,7 @@ public class FeedRequest {
 			@RequestParam(name="title", required=true) String title,
 			@RequestParam(name="content", required=true) String content,
 			@RequestParam(name="datum", required=true) String datum,
-			@RequestParam(name="group", required = true) String group) {
+			@RequestParam(name="company", required = true) String group) {
 		Feed feed = new Feed();
 		feed.setTitle(title);
 		feed.setContent(content);

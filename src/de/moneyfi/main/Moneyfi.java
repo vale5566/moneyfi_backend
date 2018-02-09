@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-@ComponentScan(basePackages = {"de.moneyfi.feed", "de.moneyfi.user", "de.moneyfi.group"})
+@ComponentScan(basePackages = {"de.moneyfi.feed", "de.moneyfi.user", "de.moneyfi.company"})
 @SpringBootApplication
 public class Moneyfi {
 	

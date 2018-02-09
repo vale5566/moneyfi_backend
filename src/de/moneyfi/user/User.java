@@ -12,7 +12,7 @@ public class User {
     private int id;
     private String name;
     private String hashpassword;
-    private String group;
+    private String company;
 
     public int getId() {
         return id;
@@ -35,11 +35,11 @@ public class User {
         this.hashpassword = hashpassword;
         return this;
     }
-    public String getGroup() {
-        return group;
+    public String getCompany() {
+        return company;
     }
-    public User setGroup(String group) {
-        this.group = group;
+    public User setCompany(String company) {
+        this.company = company;
         return this;
     }
 }

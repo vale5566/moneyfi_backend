@@ -1,4 +1,4 @@
-package de.moneyfi.group;
+package de.moneyfi.company;
 
 import org.springframework.data.repository.CrudRepository;
 

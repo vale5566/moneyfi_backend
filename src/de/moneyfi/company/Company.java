@@ -1,4 +1,4 @@
-package de.moneyfi.group;
+package de.moneyfi.company;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
