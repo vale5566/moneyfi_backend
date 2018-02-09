@@ -12,6 +12,7 @@ public class User {
     private int id;
     private String name;
     private String hashpassword;
+    private String group;
 
     public int getId() {
         return id;
@@ -32,6 +33,13 @@ public class User {
     }
     public User setHashpassword(String hashpassword) {
         this.hashpassword = hashpassword;
+        return this;
+    }
+    public String getGroup() {
+        return group;
+    }
+    public User setGroup(String group) {
+        this.group = group;
         return this;
     }
 }

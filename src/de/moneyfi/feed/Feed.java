@@ -14,6 +14,7 @@ public class Feed {
 	private String title;
 	private String content;
 	private String datum /*, created, until */;
+	private String group;
 
 	public Integer getId() {
 		return id;
@@ -51,4 +52,12 @@ public class Feed {
 		return this;
 	}
 
+	public String getGroup(String group) {
+		return group;
+	}
+
+	public Feed setGroup(String group) {
+		this.group = group;
+		return this;
+	}
 }

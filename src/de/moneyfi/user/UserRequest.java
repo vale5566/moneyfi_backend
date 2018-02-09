@@ -15,10 +15,12 @@ public class UserRequest {
     private UserRepository userRepository;
     @RequestMapping(path="/add")
     public User addNewUser (@RequestParam(name="name", required=true) String name,
-    		@RequestParam(name="hashpassword", required=true) String hashpassword) {
+    		@RequestParam(name="hashpassword", required=true) String hashpassword,
+                            @RequestParam(name="group", required = true) String group) {
         User n = new User();
         n.setName(name);
         n.setHashpassword(hashpassword);
+        n.setGroup("default");
         n = userRepository.save(n);
         return n;
     }
@@ -34,10 +36,9 @@ public class UserRequest {
     		@RequestParam(name="id", defaultValue="0") Integer id) {
     	if(id > 0) {
     		return userRepository.findOne(id);
-    	} else if(name.equals("") == false) {
+    	} else if(!name.equals("")) {
             return userRepository.findByName(name);
     	}
     	return null;
     }
-    
 }

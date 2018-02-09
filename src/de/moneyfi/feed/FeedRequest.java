@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/feed")
 public class FeedRequest {
 	
-	public final static int feedsPerPage = 10;
-	
 	@Autowired
 	private FeedRepository feedRepository;
 	
@@ -31,13 +29,14 @@ public class FeedRequest {
 	public Feed createFeed(
 			@RequestParam(name="title", required=true) String title,
 			@RequestParam(name="content", required=true) String content,
-			@RequestParam(name="datum", required=true) String datum) {
+			@RequestParam(name="datum", required=true) String datum,
+			@RequestParam(name="group", required = true) String group) {
 		Feed feed = new Feed();
 		feed.setTitle(title);
 		feed.setContent(content);
 		feed.setDatum(datum);
+		feed.setGroup(group);
 		feed = feedRepository.save(feed);
 		return feed;
 	}
-	
 }
