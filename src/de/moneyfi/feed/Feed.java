@@ -15,6 +15,33 @@ public class Feed {
 	private String content;
 	private String datum /*, created, until */;
 	private String company;
+	private Integer pplwanted;
+	private Integer pplaccepted;
+	private Integer[] ppldenied = new Integer[0];
+
+	public Integer getPplwanted() {
+		return pplwanted;
+	}
+
+	public void setPplwanted(Integer pplwanted) {
+		this.pplwanted = pplwanted;
+	}
+
+	public Integer getPplaccepted() {
+		return pplaccepted;
+	}
+
+	public void setPplaccepted(Integer pplaccepted) {
+		this.pplaccepted = pplaccepted;
+	}
+
+	public Integer[] getPpldenied() {
+		return ppldenied;
+	}
+
+	public void setPpldenied(Integer[] ppldenied) {
+		this.ppldenied = ppldenied;
+	}
 
 	public Integer getId() {
 		return id;
