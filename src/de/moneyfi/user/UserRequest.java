@@ -41,4 +41,14 @@ public class UserRequest {
     	}
     	return null;
     }
+    @RequestMapping(path = "/edit")
+    public User editUser(@RequestParam(name="name") String name,
+                           @RequestParam(name = "company", required = true) String getcompany) {
+        int id = userRepository.findByName(name).getId();
+        String company = userRepository.findOne(id).getCompany();
+        String substring = company + "," +  getcompany;
+        User user = userRepository.findOne(id);
+        user.setCompany(substring);
+        return user;
+    }
 }
