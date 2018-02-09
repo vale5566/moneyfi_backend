@@ -14,7 +14,7 @@ public class Feed {
 	private String title;
 	private String content;
 	private String datum /*, created, until */;
-	private String group;
+	private String company;
 
 	public Integer getId() {
 		return id;
@@ -52,12 +52,12 @@ public class Feed {
 		return this;
 	}
 
-	public String getGroup(String group) {
-		return group;
+	public String getCompany() {
+		return company;
 	}
 
-	public Feed setGroup(String group) {
-		this.group = group;
+	public Feed setCompany(String company) {
+		this.company = company;
 		return this;
 	}
 }
