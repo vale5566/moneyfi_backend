@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableAutoConfiguration
-@RequestMapping("/group")
+@RequestMapping("/company")
 public class CompanyRequest {
     @Autowired
     private CompanyRepository companyRepository;
     @RequestMapping(path="/add")
-    public Company addNewGroup (@RequestParam(name="name", required=true) String name,
-                                @RequestParam(name="hashpassword", required=true) String hashpassword) {
+    public Company addNewCompany (@RequestParam(name="name", required=true) String name,
+                                 @RequestParam(name="hashpassword", required=true) String hashpassword) {
         Company n = new Company();
         n.setName(name);
         n.setHashpassword(hashpassword);
@@ -23,7 +23,7 @@ public class CompanyRequest {
     }
 
     @RequestMapping(path="/get")
-    public Company getGroup(@RequestParam(name="name", defaultValue="") String name) {
+    public Company getCompany(@RequestParam(name="name", defaultValue="") String name) {
         if(!name.equals("")) {
             return companyRepository.findByName(name);
         }
