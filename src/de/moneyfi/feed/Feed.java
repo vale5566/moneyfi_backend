@@ -19,32 +19,36 @@ public class Feed {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public Feed setId(Integer id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public Feed setTitle(String title) {
 		this.title = title;
+		return this;
 	}
 
 	public String getContent() {
 		return content;
 	}
 
-	public void setContent(String content) {
+	public Feed setContent(String content) {
 		this.content = content;
+		return this;
 	}
 
 	public String getDatum() {
 		return datum;
 	}
 
-	public void setDatum(String datum) {
+	public Feed setDatum(String datum) {
 		this.datum = datum;
+		return this;
 	}
 
 }

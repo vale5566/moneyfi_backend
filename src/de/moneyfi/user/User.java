@@ -16,19 +16,22 @@ public class User {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
+    public User setId(int id) {
         this.id = id;
+        return this;
     }
     public String getName() {
         return name;
     }
-    public void setName(String name) {
+    public User setName(String name) {
         this.name = name;
+        return this;
     }
     public String getHashPassword() {
         return hashpassword;
     }
-    public void setHashpassword(String hashpassword) {
+    public User setHashpassword(String hashpassword) {
         this.hashpassword = hashpassword;
+        return this;
     }
 }

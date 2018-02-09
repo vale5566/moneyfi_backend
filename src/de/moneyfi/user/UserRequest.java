@@ -2,31 +2,42 @@ package de.moneyfi.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @EnableAutoConfiguration
 @RequestMapping("/user")
 public class UserRequest {
     @Autowired
     private UserRepository userRepository;
-    @GetMapping(path="/add")
-    public User addNewUser (@RequestParam int id, @RequestParam String name, @RequestParam String hashpassword) {
+    @RequestMapping(path="/add")
+    public User addNewUser (@RequestParam(name="name", required=true) String name,
+    		@RequestParam(name="hashpassword", required=true) String hashpassword) {
         User n = new User();
-        n.setId(id);
         n.setName(name);
         n.setHashpassword(hashpassword);
-        userRepository.save(n);
+        n = userRepository.save(n);
         return n;
     }
 
-    @GetMapping(path="/all")
+    @RequestMapping(path="/all")
     public @ResponseBody Iterable<User> getAllUsers() {
         // This returns a JSON or XML with the users
         return userRepository.findAll();
     }
+
+    @RequestMapping(path="/get")
+    public User getUser(@RequestParam(name="name", defaultValue="") String name,
+    		@RequestParam(name="id", defaultValue="0") Integer id) {
+    	if(id > 0) {
+    		return userRepository.findOne(id);
+    	} else if(name.equals("") == false) {
+            return userRepository.findByName(name);
+    	}
+    	return null;
+    }
+    
 }

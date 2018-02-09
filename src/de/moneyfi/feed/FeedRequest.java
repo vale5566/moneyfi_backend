@@ -2,7 +2,6 @@ package de.moneyfi.feed;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,12 +17,12 @@ public class FeedRequest {
 	@Autowired
 	private FeedRepository feedRepository;
 	
-	@GetMapping("/")
+	@RequestMapping("/")
 	public @ResponseBody Iterable<Feed> index() {
 		return feedRepository.findAll();
 	}
 	
-	@GetMapping("/get")
+	@RequestMapping("/get")
 	public Feed requestFeed(@RequestParam(name="id", required=true) int id) {
 		return feedRepository.findOne(id);
 	}
@@ -37,7 +36,7 @@ public class FeedRequest {
 		feed.setTitle(title);
 		feed.setContent(content);
 		feed.setDatum(datum);
-		feedRepository.save(feed);
+		feed = feedRepository.save(feed);
 		return feed;
 	}
 	
