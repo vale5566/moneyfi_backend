@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/group")
 public class GroupRequest {
     @Autowired
-    private GroupRepository groupRepository;
+    private CompanyRepository companyRepository;
     @RequestMapping(path="/add")
-    public Group addNewGroup (@RequestParam(name="name", required=true) String name,
-                            @RequestParam(name="hashpassword", required=true) String hashpassword) {
-        Group n = new Group();
+    public Company addNewGroup (@RequestParam(name="name", required=true) String name,
+                                @RequestParam(name="hashpassword", required=true) String hashpassword) {
+        Company n = new Company();
         n.setName(name);
         n.setHashpassword(hashpassword);
-        n = groupRepository.save(n);
+        n = companyRepository.save(n);
         return n;
     }
 
     @RequestMapping(path="/get")
-    public Group getGroup(@RequestParam(name="name", defaultValue="") String name) {
+    public Company getGroup(@RequestParam(name="name", defaultValue="") String name) {
         if(!name.equals("")) {
-            return groupRepository.findByName(name);
+            return companyRepository.findByName(name);
         }
         return null;
     }

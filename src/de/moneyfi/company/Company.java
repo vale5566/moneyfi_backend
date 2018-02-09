@@ -6,11 +6,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Group {
-    private String hashpassword;
+public class Company {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String name;
+    private String hashpassword;
 
     public String getName() {
         return name;
@@ -23,7 +23,7 @@ public class Group {
     public String getHashPassword() {
         return hashpassword;
     }
-    public Group setHashpassword(String hashpassword) {
+    public Company setHashpassword(String hashpassword) {
         this.hashpassword = hashpassword;
         return this;
     }
