@@ -35,7 +35,10 @@ public class FeedRequest {
 			@RequestParam(name="company", required = true) String company,
 			@RequestParam(name="pplwanted", required=true) Integer pplwanted,
 			@RequestParam(name="pplaccepted", required=false) String pplaccepted,
-			@RequestParam(name="ppldenied", required=false) String ppldenied) {
+			@RequestParam(name="ppldenied", required=false) String ppldenied,
+			@RequestParam(name="money", required = true) Double money,
+			@RequestParam(name="location", required = true) String location,
+			@RequestParam(name="time", required = true) String time) {
 		Feed feed = new Feed();
 		feed.setTitle(title);
 		feed.setContent(content);
@@ -44,6 +47,9 @@ public class FeedRequest {
 		feed.setPplwanted(pplwanted);
 		feed.setPplaccepted(pplaccepted);
 		feed.setPpldenied(ppldenied);
+		feed.setMoney(money);
+		feed.setLocation(location);
+		feed.setTime(time);
 		feed = feedRepository.save(feed);
 		return feed;
 	}
@@ -57,31 +63,44 @@ public class FeedRequest {
 			@RequestParam(name="company", required = false) String company,
 			@RequestParam(name="pplwanted", required = false) Integer pplwanted,
 			@RequestParam(name="pplaccepted", required = false) String pplaccepted,
-			@RequestParam(name="ppldenied", required = false) String ppldenied) {
+			@RequestParam(name="ppldenied", required = false) String ppldenied,
+			@RequestParam(name="money", required = false) Double money,
+			@RequestParam(name= "location", required = false) String location,
+			@RequestParam(name="time", required = false) String time) {
 
 		int idd = feedRepository.findById(id).getId();
 		Feed feed = feedRepository.findOne(idd);
-		if(title != null) {
+		if(title != null && !title.equals("")) {
 			feed.setTitle(title);
 		}
-		if(content != null) {
+		if(content != null && !content.equals("")) {
 			feed.setContent(content);
 		}
-		if(datum != null) {
+		if(datum != null && !datum.equals("")) {
 			feed.setDatum(datum);
 		}
-		if(company != null) {
+		if(company != null && !company.equals("")) {
 			feed.setCompany(company);
 		}
 		if(pplwanted != null) {
 			feed.setPplwanted(pplwanted);
 		}
-		if(pplaccepted != null) {
+		if(pplaccepted != null && !pplaccepted.equals("")) {
 			feed.setPplaccepted(pplaccepted);
 		}
-		if(ppldenied != null) {
+		if(ppldenied != null && !ppldenied.equals("")) {
 			feed.setPpldenied(ppldenied);
 		}
+		if(money != null) {
+			feed.setMoney(money);
+		}
+		if(location != null && !location.equals("")) {
+			feed.setLocation(location);
+		}
+		if(time != null && !time.equals("")) {
+			feed.setTime(time);
+		}
+
 		return feed;
 	}
 

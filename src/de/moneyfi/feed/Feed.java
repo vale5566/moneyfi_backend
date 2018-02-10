@@ -13,11 +13,38 @@ public class Feed {
 	private Integer id;
 	private String title;
 	private String content;
-	private String datum /*, created, until */;
+	private String datum;
 	private String company;
 	private Integer pplwanted;
 	private String pplaccepted;
 	private String ppldenied;
+	private Double money;
+	private String location;
+	private String time;
+
+	public Double getMoney() {
+		return money;
+	}
+
+	public void setMoney(Double money) {
+		this.money = money;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public Integer getPplwanted() {
 		return pplwanted;
