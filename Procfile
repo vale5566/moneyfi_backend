@@ -1,1 +1,1 @@
-web: java -jar target/moneyfi-0.0.1-SNAPSHOT.jar
+web: java -jar moneyfi-0.0.1-SNAPSHOT.jar
