@@ -15,18 +15,18 @@ public class Feed {
 	private String content;
 	private String datum;
 	private String company;
-	private Integer pplwanted;
+	private String pplwanted;
 	private String pplaccepted;
 	private String ppldenied;
-	private Double money;
+	private String money;
 	private String location;
-	private String time;
+	private String timefrom, timeuntil;
 
-	public Double getMoney() {
+	public String getMoney() {
 		return money;
 	}
 
-	public void setMoney(Double money) {
+	public void setMoney(String money) {
 		this.money = money;
 	}
 
@@ -38,19 +38,11 @@ public class Feed {
 		this.location = location;
 	}
 
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public Integer getPplwanted() {
+	public String getPplwanted() {
 		return pplwanted;
 	}
 
-	public void setPplwanted(Integer pplwanted) {
+	public void setPplwanted(String pplwanted) {
 		this.pplwanted = pplwanted;
 	}
 
@@ -113,5 +105,21 @@ public class Feed {
 	public Feed setCompany(String company) {
 		this.company = company;
 		return this;
+	}
+
+	public String getTimeuntil() {
+		return timeuntil;
+	}
+
+	public void setTimeuntil(String timeuntil) {
+		this.timeuntil = timeuntil;
+	}
+
+	public String getTimefrom() {
+		return timefrom;
+	}
+
+	public void setTimefrom(String timefrom) {
+		this.timefrom = timefrom;
 	}
 }

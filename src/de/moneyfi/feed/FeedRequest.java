@@ -33,12 +33,13 @@ public class FeedRequest {
 			@RequestParam(name="content", required=true) String content,
 			@RequestParam(name="datum", required=true) String datum,
 			@RequestParam(name="company", required = true) String company,
-			@RequestParam(name="pplwanted", required=true) Integer pplwanted,
+			@RequestParam(name="pplwanted", required=true) String pplwanted,
 			@RequestParam(name="pplaccepted", required=false) String pplaccepted,
 			@RequestParam(name="ppldenied", required=false) String ppldenied,
-			@RequestParam(name="money", required = true) Double money,
+			@RequestParam(name="money", required = true) String money,
 			@RequestParam(name="location", required = true) String location,
-			@RequestParam(name="time", required = true) String time) {
+			@RequestParam(name="timefrom", required = true) String timefrom,
+			@RequestParam(name="timeuntil", required = true) String timeuntil) {
 		Feed feed = new Feed();
 		feed.setTitle(title);
 		feed.setContent(content);
@@ -49,7 +50,8 @@ public class FeedRequest {
 		feed.setPpldenied(ppldenied);
 		feed.setMoney(money);
 		feed.setLocation(location);
-		feed.setTime(time);
+		feed.setTimefrom(timefrom);
+		feed.setTimeuntil(timeuntil);
 		feed = feedRepository.save(feed);
 		return feed;
 	}
@@ -61,12 +63,13 @@ public class FeedRequest {
 			@RequestParam(name="content", required = false) String content,
 			@RequestParam(name="datum", required = false) String datum,
 			@RequestParam(name="company", required = false) String company,
-			@RequestParam(name="pplwanted", required = false) Integer pplwanted,
+			@RequestParam(name="pplwanted", required = false) String pplwanted,
 			@RequestParam(name="pplaccepted", required = false) String pplaccepted,
 			@RequestParam(name="ppldenied", required = false) String ppldenied,
-			@RequestParam(name="money", required = false) Double money,
+			@RequestParam(name="money", required = false) String money,
 			@RequestParam(name= "location", required = false) String location,
-			@RequestParam(name="time", required = false) String time) {
+			@RequestParam(name="timeuntil", required = false) String timeuntil,
+		@RequestParam(name="timefrom", required = false) String timefrom) {
 
 		int idd = feedRepository.findById(id).getId();
 		Feed feed = feedRepository.findOne(idd);
@@ -97,8 +100,11 @@ public class FeedRequest {
 		if(location != null && !location.equals("")) {
 			feed.setLocation(location);
 		}
-		if(time != null && !time.equals("")) {
-			feed.setTime(time);
+		if(timefrom != null && !timefrom.equals("")) {
+			feed.setTimefrom(timefrom);
+		}
+		if(timeuntil != null && !timeuntil.equals("")) {
+			feed.setTimeuntil(timeuntil);
 		}
 
 		return feed;
