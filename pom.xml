@@ -14,6 +14,14 @@
 		<version>1.5.10.RELEASE</version>
 	</parent>
 
+    <profiles>
+        <profile>
+            <id>profile1</id>
+            <properties>
+                <spring.boot.mainclass>de.moneyfi.main.Moneyfi</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
 
 	<dependencies>
 		<dependency>
@@ -70,6 +78,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
 		</plugins>
 	</build>
