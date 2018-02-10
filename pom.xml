@@ -13,15 +13,6 @@
 		<version>1.5.10.RELEASE</version>
 	</parent>
 
-    <profiles>
-        <profile>
-            <id>profile1</id>
-            <properties>
-                <spring.boot.mainclass>de.moneyfi.main.Moneyfi</spring.boot.mainclass>
-            </properties>
-        </profile>
-    </profiles>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -82,13 +73,6 @@
                     <mainClass>de.moneyfi.main.Moneyfi</mainClass>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                    <executable>C:\jdk1.9\bin\javaw.exe</executable>
-                </configuration>
-			</plugin>
 		</plugins>
 	</build>
 
