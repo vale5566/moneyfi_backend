@@ -16,8 +16,8 @@ public class Feed {
 	private String datum /*, created, until */;
 	private String company;
 	private Integer pplwanted;
-	private Integer pplaccepted;
-	private Integer[] ppldenied = new Integer[0];
+	private String pplaccepted;
+	private String ppldenied;
 
 	public Integer getPplwanted() {
 		return pplwanted;
@@ -27,19 +27,19 @@ public class Feed {
 		this.pplwanted = pplwanted;
 	}
 
-	public Integer getPplaccepted() {
+	public String getPplaccepted() {
 		return pplaccepted;
 	}
 
-	public void setPplaccepted(Integer pplaccepted) {
+	public void setPplaccepted(String pplaccepted) {
 		this.pplaccepted = pplaccepted;
 	}
 
-	public Integer[] getPpldenied() {
+	public String getPpldenied() {
 		return ppldenied;
 	}
 
-	public void setPpldenied(Integer[] ppldenied) {
+	public void setPpldenied(String ppldenied) {
 		this.ppldenied = ppldenied;
 	}
 

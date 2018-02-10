@@ -34,16 +34,16 @@ public class FeedRequest {
 			@RequestParam(name="datum", required=true) String datum,
 			@RequestParam(name="company", required = true) String company,
 			@RequestParam(name="pplwanted", required=true) Integer pplwanted,
-			@RequestParam(name="pplaccepted", required=false) Integer pplaccepted,
-			@RequestParam(name="ppldenied", required=false) Integer[] ppldenied) {
+			@RequestParam(name="pplaccepted", required=false) String pplaccepted,
+			@RequestParam(name="ppldenied", required=false) String ppldenied) {
 		Feed feed = new Feed();
 		feed.setTitle(title);
 		feed.setContent(content);
 		feed.setDatum(datum);
 		feed.setCompany(company);
 		feed.setPplwanted(pplwanted);
-		feed.setPplaccepted(0);
-		feed.setPpldenied(new Integer[0]);
+		feed.setPplaccepted(pplaccepted);
+		feed.setPpldenied(ppldenied);
 		feed = feedRepository.save(feed);
 		return feed;
 	}
@@ -56,8 +56,8 @@ public class FeedRequest {
 			@RequestParam(name="datum", required = false) String datum,
 			@RequestParam(name="company", required = false) String company,
 			@RequestParam(name="pplwanted", required = false) Integer pplwanted,
-			@RequestParam(name="pplaccepted", required = false) Integer pplaccepted,
-			@RequestParam(name="ppldenied", required = false) Integer[] ppldenied) {
+			@RequestParam(name="pplaccepted", required = false) String pplaccepted,
+			@RequestParam(name="ppldenied", required = false) String ppldenied) {
 
 		int idd = feedRepository.findById(id).getId();
 		Feed feed = feedRepository.findOne(idd);
@@ -83,5 +83,42 @@ public class FeedRequest {
 			feed.setPpldenied(ppldenied);
 		}
 		return feed;
+	}
+
+	@RequestMapping("/adduser")
+	public Feed addUser(@RequestParam(name="id", required=true) Integer id, @RequestParam(name="user", required=true) String user) {
+		Feed feed = feedRepository.findOne(id);
+		if(feed.getPplaccepted() == null) {
+			feed.setPplaccepted("");
+		}
+		if(contains(feed.getPplaccepted().split(";"), user)) {
+			return null;
+		} else {
+			feed.setPplaccepted(feed.getPplaccepted() + user + ";");
+		}
+		return feedRepository.save(feed);
+		
+	}
+	
+	@RequestMapping("/denyuser")
+	public Feed denyUser(@RequestParam(name="id", required=true) Integer id, @RequestParam(name="user", required=true) String user) {
+		Feed feed = feedRepository.findOne(id);
+		if(feed.getPpldenied() == null) {
+			feed.setPpldenied("");
+		}
+		if(contains(feed.getPpldenied().split(";"), user)) {
+			return null;
+		} else {
+			feed.setPpldenied(feed.getPpldenied() + user + ";");
+		}
+		return feedRepository.save(feed);
+		
+	}
+	
+	private boolean contains(String[] users, String user) {
+		for(String u : users) {
+			if(user.equals(u)) return true;
+		}
+		return false;
 	}
 }
