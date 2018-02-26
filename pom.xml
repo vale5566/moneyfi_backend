@@ -72,13 +72,11 @@
 		<plugins>
 			<plugin>
 				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.3.6</version>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>1.0.0</version>
 				<configuration>
-					<repository>vale5566/moneyfi_backend</repository>
-					<buildArgs>
-						<JAR_FILE>moneyfi.jar</JAR_FILE>
-					</buildArgs>
+					<imageName>vale5566/moneyfi_backend</imageName>
+					<baseImage>java</baseImage>
 				</configuration>
 			</plugin>
 			<plugin>
